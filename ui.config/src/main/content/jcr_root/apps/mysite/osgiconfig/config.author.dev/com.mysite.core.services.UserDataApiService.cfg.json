@@ -1,0 +1,5 @@
+{
+    "userDataApiEndPoint":"https://gorest.co.in/public/v2/users",
+    "enableApi":true,
+    "clientID":"123456"
+}
