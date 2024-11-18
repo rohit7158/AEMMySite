@@ -2,19 +2,17 @@ package com.mysite.core.models;
 
 import java.util.Date;
 
+import javax.annotation.PostConstruct;
+
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
-import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.Default;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
-import org.apache.sling.models.annotations.injectorspecific.OSGiService;
-import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import com.adobe.cq.export.json.ExporterConstants;
-import com.mysite.core.services.UserDataApiService;
 
 @Model(
 	adaptables = {Resource.class, SlingHttpServletRequest.class},
@@ -22,12 +20,6 @@ import com.mysite.core.services.UserDataApiService;
 	defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name=ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class ArticleDetailsModel {
-    
-	@OSGiService
-	UserDataApiService articleService;
-	
-	@SlingObject
-	ResourceResolver resolver;
 	
     @ValueMapValue(name = "articleTitle")
     @Default(values= "Article")
@@ -41,6 +33,18 @@ public class ArticleDetailsModel {
 
     @ValueMapValue
     private Date articlePubDate;
+
+    private boolean articleExpired;
+
+    @PostConstruct
+    public void init() {
+        if(articlePubDate != null) {
+            Date todayDate = new Date();
+            if(articlePubDate.compareTo(todayDate) <= 0) {
+                articleExpired = true;
+            }
+        }
+    }
 
     public String getTitle() {
         return title;
@@ -57,5 +61,10 @@ public class ArticleDetailsModel {
     public Date getArticlePubDate() {
         return articlePubDate;
     }
+
+    public boolean isArticleExpired() {
+        return articleExpired;
+    }
+    
     
 }

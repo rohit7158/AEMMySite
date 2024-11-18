@@ -1,9 +1,14 @@
 News Article Details Component Dialog
 
-<div class="article-details-main-div" data-sly-use.model="com.mysite.core.models.ArticleDetailsModel">
+<sly data-sly-use.model="com.mysite.core.models.ArticleDetailsModel"/>
+
+<div class="article-details-main-div" data-sly-test="${!model.articleExpired}">   
     <p>${model.title}</p>
     <p>${model.articlePubDate}</p>
     <p>${model.articlePublisher}
     <p>${model.description}</p>
 </div>
 
+<div class="article-details-main-div" data-sly-test="${model.articleExpired}">   
+    <h2>Article is Expired</h2>
+</div>
