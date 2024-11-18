@@ -1,64 +1,78 @@
-/* General container styling */
+/* Main container for the article details */
 .article-details-main-div {
-    background-color: #f9f9f9; /* Light background */
-    padding: 20px; /* Add some padding */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
-    max-width: 600px; /* Limit width */
-    margin: 20px auto; /* Center it horizontally with margin on top and bottom */
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #ffffff; /* Light background */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
 }
 
-/* Title styling */
-.article-details-main-div p:first-child {
-    font-size: 24px; /* Larger text for the title */
-    font-weight: bold; /* Make title bold */
-    color: red; /* Dark text color */
-    margin-bottom: 10px; /* Add space after title */
+/* Styling the title */
+.article-details-main-div p:first-of-type {
+    font-size: 1.6em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #2a6ebf; /* Soft blue for the title */
 }
 
-/* Description styling */
-.article-details-main-div p:nth-child(2) {
-    font-size: 16px; /* Set font size for description */
-    color: #666; /* Light gray text */
-    line-height: 1.6; /* Increase line height for better readability */
-    margin-bottom: 15px; /* Add space below description */
+/* Styling the publication date */
+.article-details-main-div p:nth-of-type(2) {
+    font-size: 0.9em;
+    color: #999; /* Light gray for subtle emphasis */
+    margin-bottom: 10px;
 }
 
-/* Date styling */
-.article-details-main-div p:nth-child(3) {
-    font-size: 14px; /* Smaller font size */
-    color: #999; /* Light gray color for date */
-    font-style: italic; /* Italicize the date */
-    margin-bottom: 8px; /* Space between date and next element */
+/* Styling the publisher */
+.article-details-main-div p:nth-of-type(3) {
+    font-size: 1em;
+    color: #00509e; /* Slightly darker blue */
+    font-weight: bold;
+    margin-bottom: 15px;
 }
 
-/* Resource type styling */
-.article-details-main-div p:nth-child(4) {
-    font-size: 14px; /* Same size as date */
-    color: #333; /* Darker text color for resource type */
-    font-weight: normal; /* Normal font weight */
-    opacity: 0.8; /* Slightly faded text */
+/* Styling the description */
+.article-details-main-div p:last-of-type {
+    font-size: 1.1em;
+    color: #333; /* Neutral dark gray for readability */
+    line-height: 1.6;
 }
 
-/* Add a hover effect when the component is hovered over */
+/* Styling for expired articles */
+.article-details-main-div h2 {
+    font-size: 1.8em;
+    color: #d9534f; /* Soft red for expired notification */
+    text-align: center;
+    margin-top: 20px;
+    background-color: #ffe6e6; /* Light red background */
+    padding: 15px;
+    border-radius: 8px;
+}
+
+/* Add hover effect to the main div */
 .article-details-main-div:hover {
-    background-color: #f1f1f1; /* Slightly darker background on hover */
-    transform: translateY(-3px); /* Slight raise effect */
-    transition: all 0.3s ease; /* Smooth transition effect */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    background-color: #f8faff; /* Subtle blue hover background */
 }
 
-/* Add responsive styles */
-@media (max-width: 768px) {
+/* Optional: Adding a subtle border to the main div */
+.article-details-main-div {
+    border: 1px solid #e0e0e0; /* Light gray border */
+}
+
+/* Optional: responsive styling for smaller screens */
+@media screen and (max-width: 768px) {
     .article-details-main-div {
-        padding: 15px; /* Less padding on smaller screens */
-        max-width: 100%; /* Full width */
+        margin: 10px;
+        padding: 15px;
     }
 
-    .article-details-main-div p:first-child {
-        font-size: 20px; /* Smaller title font on mobile */
+    .article-details-main-div p:first-of-type {
+        font-size: 1.4em;
     }
 
-    .article-details-main-div p:nth-child(2) {
-        font-size: 14px; /* Smaller description text on mobile */
+    .article-details-main-div p:last-of-type {
+        font-size: 1em;
     }
 }
