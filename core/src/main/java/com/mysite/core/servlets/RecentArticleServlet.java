@@ -9,10 +9,19 @@ import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
 import org.apache.sling.servlets.annotations.SlingServletPaths;
+import org.apache.sling.servlets.annotations.SlingServletResourceTypes;
 import org.osgi.service.component.annotations.Component;
 
 @Component(service = Servlet.class)
-@SlingServletPaths(value = {"/bin/mysite/recent-article", "/bin/mysite/recent-articles"})
+@SlingServletPaths(
+    value = {"/bin/mysite/recent-article", "/bin/mysite/recent-articles"}
+)
+@SlingServletResourceTypes(
+    resourceTypes = "mysite/servlet/recent-articles",
+    extensions = {"txt","json"},
+    methods = {"GET", "POST"},
+    selectors = {"recent","popular"}
+)
 public class RecentArticleServlet extends SlingAllMethodsServlet {
 
     @Override
