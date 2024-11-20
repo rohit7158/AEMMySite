@@ -14,10 +14,10 @@ import org.osgi.service.component.annotations.Component;
 
 @Component(service = Servlet.class)
 @SlingServletPaths(
-    value = {"/bin/mysite/recent-article", "/bin/mysite/recent-articles"}
+    value = {"/bin/recent-article", "/bin/mysite/recent-article"}
 )
 @SlingServletResourceTypes(
-    resourceTypes = "mysite/servlet/recent-articles",
+    resourceTypes = "mysite/servlet/recent-article",
     extensions = {"txt","json"},
     methods = {"GET", "POST"},
     selectors = {"recent","popular"}
@@ -30,13 +30,17 @@ public class RecentArticleServlet extends SlingAllMethodsServlet {
                 response.getWriter().write("Inside doGet Method of Servlet");
     }
 
-    
     @Override
     protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response)
             throws ServletException, IOException {
-                response.getWriter().write("Inside doPost Method of Servlet");
+        String param1 = request.getParameter("param1");
+        String param2 = request.getParameter("param2");
+    
+        String responseMessage = "Received param1: " + param1 + ", param2: " + param2;
+    
+        response.setContentType("text/plain");
+        response.getWriter().write(responseMessage);
     }
-
     
     @Override
     protected void doPut(SlingHttpServletRequest request, SlingHttpServletResponse response)
@@ -44,7 +48,6 @@ public class RecentArticleServlet extends SlingAllMethodsServlet {
                 response.getWriter().write("Inside doPut Method of Servlet");
     }
 
-    
     @Override
     protected void doDelete(SlingHttpServletRequest request, SlingHttpServletResponse response)
             throws ServletException, IOException {

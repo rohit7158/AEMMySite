@@ -1,0 +1,13 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+#response1 {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background: #793b3b;
+}
+button {
+    margin: 5px;
+}
