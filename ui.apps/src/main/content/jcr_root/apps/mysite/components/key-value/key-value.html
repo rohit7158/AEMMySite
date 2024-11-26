@@ -1,0 +1,11 @@
+<div data-sly-use.templates="core/wcm/components/commons/v1/templates.html">
+    <sly data-sly-use.keyValueModel="com.mysite.core.models.KeyValueModel">
+        <sly data-sly-list.keyValuePair="${keyValueModel.keyValuePairs}">
+            <div>
+                <p>${keyValuePair.key @ context='text'}</p>
+                <p>${keyValuePair.value @ context='text'}</p>
+            </div>
+        </sly>
+    </sly>
+</div>    
+<sly data-sly-call="${templates.placeholder @ isEmpty = !keyValueModel.keyValuePairs, classAppend = 'cmp-image cq-dd-image'}"></sly>
