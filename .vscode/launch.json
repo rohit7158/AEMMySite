@@ -7,7 +7,7 @@
             "projectName": "mysite",
             "request": "attach",
             "hostName": "localhost",
-            "port": 30303
+            "port": 8888
         }
     ]
 }
